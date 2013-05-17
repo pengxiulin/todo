@@ -39,20 +39,12 @@
       function makeApiCall() {
         // 认证成功后
         // Step 4: Load the Google+ API
-        gapi.client.load('plus', 'v1', function() {
+        gapi.client.load('calendar', 'v3', function() {
           // Step 5: Assemble the API request
-          var request = gapi.client.plus.people.get({
-            'userId': 'me'
-          });
+          var request = gapi.client.calendar.calendarList.list();
           // Step 6: Execute the API request
           request.execute(function(resp) {
-            var heading = document.createElement('h4');
-            var image = document.createElement('img');
-            image.src = resp.image.url;
-            heading.appendChild(image);
-            heading.appendChild(document.createTextNode(resp.displayName));
-
-            document.getElementById('content').appendChild(heading);
+            console.log(resp);
           });
         });
       }
